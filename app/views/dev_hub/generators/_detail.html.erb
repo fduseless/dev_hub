@@ -1,0 +1,80 @@
+<div class="card">
+  <% if @generator %>
+    <div class="card-header">
+      <h3 class="card-title"><%= @namespace %></h3>
+    </div>
+    <div class="card-body">
+      <pre><%= @generator.desc %></pre>
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Options</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table card-table table-vcenter text-nowrap">
+            <thead>
+              <tr>
+                <th class="w-1">name</th>
+                <th>description</th>
+                <th>required</th>
+                <th>type</th>
+                <th>default</th>
+                <th>repeatable</th>
+                <th>enum</th>
+                <th>aliases</th>
+                <th>group</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @generator.class_options.each do |name, option| %>
+              <tr>
+                <td><%= option.name %></td>
+                <td class="text-wrap"><%= option.description%></td>
+                <td><%= option.required %></td>
+                <td><%= option.type %></td>
+                <td><%= option.default %></td>
+                <td><%= option.repeatable %></td>
+                <td><%= option.enum %></td>
+                <td><%= option.aliases %></td>
+                <td><%= option.group %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card mt-2">
+        <div class="card-header">
+          <h3 class="card-title">Arguments</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table card-table table-vcenter text-nowrap">
+            <thead>
+              <tr>
+                <th class="w-1">name</th>
+                <th>banner</th>
+                <th>description</th>
+                <th>required</th>
+                <th>type</th>
+                <th>default</th>
+                <th>enum</th>
+              </tr>
+            </thead>
+            <tbody>
+            <% @generator.arguments.each do |args| %>
+              <tr>
+                <td><%= args.name %></td>
+                <td><%= args.banner %></td>
+                <td class="text-wrap"><%= args.description%></td>
+                <td><%= args.required %></td>
+                <td><%= args.type %></td>
+                <td><%= args.default %></td>
+                <td><%= args.enum %></td>
+              </tr>
+            <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

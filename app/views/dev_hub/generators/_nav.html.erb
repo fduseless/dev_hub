@@ -1,0 +1,29 @@
+<div class="card">
+  <div class="card-header">
+    <h3 class="card-title">Generator List</h3>
+  </div>
+  <div class="card-body">
+    <div class="accordion" id="accordion-generator-list">
+      <% @generators.each do |namespace, list| %>
+        <div class="accordion-item">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse-<%= namespace %>" aria-expanded="true">
+            <%= namespace%>
+            </button>
+          </h2>
+          <div id="collapse-<%= namespace %>" class="accordion-collapse collapse <%= "show" if list.include?(@namespace)%>" data-bs-parent="#accordion-generator-list">
+            <div class="accordion-body pt-0">
+              <div class="list-group list-group-flush">
+                <% list.each do |generator| %>
+                  <a href="<%= generators_path({namespace: generator}) %>" class="list-group-item list-group-item-action <%= "active" if (generator == @namespace)%>" aria-current="true">
+                    <%= generator %>
+                  </a>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

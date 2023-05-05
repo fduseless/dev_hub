@@ -1,0 +1,25 @@
+<!-- Page header -->
+<%# <div class="page-header d-print-none">
+  <div class="container-xl">
+    <div class="row g-2 align-items-center">
+      <div class="col">
+        <h2 class="page-title">
+          Generator Hub
+        </h2>
+      </div>
+    </div>
+  </div>
+</div> %>
+<!-- Page body -->
+<div class="page-body">
+  <div class="container-xl">
+    <div class="row row-deck row-cards">
+      <div class="col-md-6 col-lg-4">
+        <%= render partial: "nav", locals: {generators: @generators, namespace: @namespace} %>
+      </div>
+      <div class="col-md-12 col-lg-8">
+        <%= render partial: "detail", locals: {generator: @generator, namespace: @namespace} %>
+      </div>
+    </div>
+  </div>
+</div>
